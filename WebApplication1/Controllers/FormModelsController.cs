@@ -71,7 +71,7 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> Create([Bind("TrIndex,TrDateTime,FirstName,LastName,Email,Phone,BirthDate")] FormModel formModel)
         {
             // remove mask from phone
-
+            formModel.TrDateTime = DateTime.Now;
             try {formModel.Phone = formModel.Phone.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", ""); } catch { }
             
             if (formModel.Phone.Length > 10 || formModel.Phone.Length < 10)
